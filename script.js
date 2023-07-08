@@ -16,7 +16,7 @@ function checkWinner(playerWeapon, computerWeapon) {
 }
 
 function playerSelectWeapon() {
-	playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')");
+	playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')").toLowerCase();
 	return playerWeapon;
 }
 

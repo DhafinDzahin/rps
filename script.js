@@ -5,14 +5,14 @@ function checkWinner(playerWeapon, computerWeapon) {
 		playerWeapon = playerSelectWeapon();
 	}
 
-	if (playerWeapon === computerWeapon) return "draw";
+	if (playerWeapon === computerWeapon) return "Draw";
 	if (
 		(playerWeapon === "paper" && computerWeapon === "rock") ||
 		(playerWeapon === "rock" && computerWeapon === "scissor") ||
 		(playerWeapon === "paper" && computerWeapon === "rock")
 	)
-		return "player win";
-	return "computer win";
+		return "Player win";
+	return "Computer win";
 }
 
 function playerSelectWeapon() {

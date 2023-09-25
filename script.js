@@ -18,16 +18,11 @@ function checkWinner(playerWeapon, computerWeapon) {
 	return "Computer win";
 }
 
-function playerSelectWeapon() {
-	playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')").toLowerCase();
-	return playerWeapon;
-}
-
 function game() {
 	playerScore = 0;
 	computerScore = 0;
 	while (playerScore < 3 && computerScore < 3) {
-		playerWeapon = playerSelectWeapon();
+		playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')").toLowerCase();
 		options = ["rock", "paper", "scissor"];
 		let computerWeapon = options[Math.floor(Math.random() * options.length)];
 

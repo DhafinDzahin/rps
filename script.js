@@ -1,15 +1,11 @@
-var playerWeapon, playerScore, computerScore, options;
+var playerWeapon, computerWeapon, playerScore, computerScore, options;
 
 function checkWinner(playerWeapon, computerWeapon) {
-	while (!options.includes(playerWeapon)) {
-		playerWeapon = playerSelectWeapon();
-	}
-
 	if (playerWeapon === computerWeapon) return "Draw";
 	if (
-		(playerWeapon === "paper" && computerWeapon === "rock") ||
-		(playerWeapon === "rock" && computerWeapon === "scissor") ||
-		(playerWeapon === "paper" && computerWeapon === "rock")
+		playerWeapon === "paper" && computerWeapon === "rock" ||
+		playerWeapon === "rock" && computerWeapon === "scissor" ||
+		playerWeapon === "paper" && computerWeapon === "rock"
 	) {
 		playerScore += 1;
 		return "Player win";
@@ -18,21 +14,24 @@ function checkWinner(playerWeapon, computerWeapon) {
 	return "Computer win";
 }
 
+function getComputerWeapon() {
+	options = ["rock", "paper", "scissor"];
+	return options[Math.floor(Math.random() * options.length)];
+}
+
 function game() {
 	playerScore = 0;
 	computerScore = 0;
 	while (playerScore < 3 && computerScore < 3) {
 		playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')").toLowerCase();
-		options = ["rock", "paper", "scissor"];
-		let computerWeapon = options[Math.floor(Math.random() * options.length)];
-
+		computerWeapon = getComputerWeapon()
 		console.log(checkWinner(playerWeapon, computerWeapon));
 		console.log(`Player choose ${playerWeapon}`);
 		console.log(`Computer choose ${computerWeapon}`);
 		console.log(`Player score: ${playerScore} computer score: ${computerScore}`);
 	}
-	if (playerScore === 3) return 'Player is the game winner'
-	return 'Computer is the game winner'
+	if (playerScore === 3) return 'Player is the game winner';
+	return 'Computer is the game winner';
 }
-console.log('first to three win')
+console.log('first to three win');
 console.log(game());

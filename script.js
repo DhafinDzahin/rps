@@ -58,12 +58,18 @@ function restart() {
 playerScore = 0;
 computerScore = 0;
 const options = ["rock", "paper", "scissor"];
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissor = document.getElementById("scissor");
+// const rock = document.getElementById("rock");
+// const paper = document.getElementById("paper");
+// const scissor = document.getElementById("scissor");
 const playerPick = document.getElementById("playerPick");
 const computerPick = document.getElementById("computerPick");
+const option = [...document.getElementById("options").children]
 
-rock.addEventListener('click', () => game('rock'));
-paper.addEventListener('click', () => game('paper'));
-scissor.addEventListener('click', () => game('scissor'));
+console.log(option)
+// rock.addEventListener('click', () => game('rock'));
+// paper.addEventListener('click', () => game('paper'));
+// scissor.addEventListener('click', () => game('scissor'));
+
+option.forEach(element => {
+	element.addEventListener('click', () => game(element.id))
+});

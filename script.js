@@ -31,21 +31,21 @@ function checkWinner(playerWeapon, computerWeapon) {
 
 function game(playerWeapon) {
 	// playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')").toLowerCase();
+	winner.textContent = ''
 	computerWeapon = options[Math.floor(Math.random() * options.length)];
 
 	let result = checkWinner(playerWeapon, computerWeapon);
 	playerPick.src = `./image/${playerWeapon}/${result.player}.jpg`;
 	computerPick.src = `./image/${computerWeapon}/${result.computer}.jpg`;
 
-	// console.log(`Player choose ${playerWeapon}`);
-	// console.log(`Computer choose ${computerWeapon}`);
-	console.log(`Player score: ${playerScore} computer score: ${computerScore}`);
-	if (playerScore === 3) {
-		console.log('Player is the game winner');
+	playerScorer.textContent = playerScore
+	computerScorer.textContent = computerScore
+	if (playerScore === 5) {
+		winner.textContent = 'Player is the game winner';
 		restart();
 	}
-	else if (computerScore === 3) {
-		console.log('Computer is the game winner');
+	else if (computerScore === 5) {
+		winner.textContent = 'Computer is the game winner';
 		restart();
 	}
 }
@@ -64,6 +64,9 @@ const options = ["rock", "paper", "scissor"];
 const playerPick = document.getElementById("playerPick");
 const computerPick = document.getElementById("computerPick");
 const option = [...document.getElementById("options").children]
+const playerScorer = document.getElementById("playerScore")
+const computerScorer = document.getElementById("computerScore")
+const winner = document.getElementById('winner')
 
 console.log(option)
 // rock.addEventListener('click', () => game('rock'));

@@ -1,4 +1,4 @@
-var playerWeapon, computerWeapon, playerScore, computerScore, options;
+var playerWeapon, computerWeapon, playerScore, computerScore;
 
 function checkWinner(playerWeapon, computerWeapon) {
 	if (playerWeapon === computerWeapon) return "Draw";
@@ -14,24 +14,43 @@ function checkWinner(playerWeapon, computerWeapon) {
 	return "Computer win";
 }
 
-function getComputerWeapon() {
-	options = ["rock", "paper", "scissor"];
-	return options[Math.floor(Math.random() * options.length)];
+
+function game(playerWeapon) {
+	// playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')").toLowerCase();
+	computerWeapon = options[Math.floor(Math.random() * options.length)];
+
+	console.log(checkWinner(playerWeapon, computerWeapon));
+	
+	playerPick.src = `./image/${playerWeapon}/${playerWeapon}.jpg`
+	computerPick.src = `./image/${computerWeapon}/${computerWeapon}.jpg`
+	
+	// console.log(`Player choose ${playerWeapon}`);
+	// console.log(`Computer choose ${computerWeapon}`);
+	console.log(`Player score: ${playerScore} computer score: ${computerScore}`);
+	if (playerScore === 3) {
+		console.log('Player is the game winner');
+		restart();
+	}
+	else if (computerScore === 3) {
+		console.log('Computer is the game winner');
+		restart()
+	}
 }
 
-function game() {
+function restart() {
 	playerScore = 0;
 	computerScore = 0;
-	while (playerScore < 3 && computerScore < 3) {
-		playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')").toLowerCase();
-		computerWeapon = getComputerWeapon()
-		console.log(checkWinner(playerWeapon, computerWeapon));
-		console.log(`Player choose ${playerWeapon}`);
-		console.log(`Computer choose ${computerWeapon}`);
-		console.log(`Player score: ${playerScore} computer score: ${computerScore}`);
-	}
-	if (playerScore === 3) return 'Player is the game winner';
-	return 'Computer is the game winner';
 }
-console.log('first to three win');
-console.log(game());
+
+playerScore = 0;
+computerScore = 0;
+const options = ["rock", "paper", "scissor"];
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissor = document.getElementById("scissor");
+const playerPick = document.getElementById("playerPick")
+const computerPick = document.getElementById("computerPick")
+
+rock.addEventListener('click', () => game('rock'));
+paper.addEventListener('click', () => game('paper'));
+scissor.addEventListener('click', () => game('scissor'));

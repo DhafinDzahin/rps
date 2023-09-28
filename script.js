@@ -30,8 +30,6 @@ function checkWinner(playerWeapon, computerWeapon) {
 
 
 function game(playerWeapon) {
-	// playerWeapon = prompt("Choose a weapon ('rock' 'paper' 'scissor')").toLowerCase();
-	winner.textContent = '';
 	computerWeapon = options[Math.floor(Math.random() * options.length)];
 
 	let result = checkWinner(playerWeapon, computerWeapon);
@@ -64,9 +62,6 @@ function mode(e) {
 playerScore = 0;
 computerScore = 0;
 const options = ["rock", "paper", "scissor"];
-// const rock = document.getElementById("rock");
-// const paper = document.getElementById("paper");
-// const scissor = document.getElementById("scissor");
 const playerPick = document.getElementById("playerPick");
 const computerPick = document.getElementById("computerPick");
 const option = [...document.getElementById("options").children];
@@ -76,9 +71,6 @@ const winner = document.getElementById('winner');
 const modes = [...document.getElementsByClassName('mode')];
 const restartBtn = document.getElementById('restart-btn')
 
-// rock.addEventListener('click', () => game('rock'));
-// paper.addEventListener('click', () => game('paper'));
-// scissor.addEventListener('click', () => game('scissor'));
 
 option.forEach(element => element.addEventListener('click', () => game(element.id)));
 
@@ -91,4 +83,5 @@ restartBtn.addEventListener('click', () => {
 	restartBtn.style.display = 'none'
 	playerScorer.textContent = playerScore;
 	computerScorer.textContent = computerScore;
+	winner.textContent = '';
 })

@@ -50,10 +50,6 @@ function game(playerWeapon) {
 	}
 }
 
-function restart() {
-	
-}
-
 function end() {
 	document.getElementById('options').style.display = 'none';
 	restartBtn.style.display = 'block'
@@ -93,4 +89,6 @@ restartBtn.addEventListener('click', () => {
 	computerScore = 0;
 	document.getElementById('options').style.display = 'flex';
 	restartBtn.style.display = 'none'
+	playerScorer.textContent = playerScore;
+	computerScorer.textContent = computerScore;
 })

@@ -42,23 +42,27 @@ function game(playerWeapon) {
 	computerScorer.textContent = computerScore;
 	if (playerScore === 5) {
 		winner.textContent = 'Player is the game winner';
-		restart();
+		end();
 	}
 	else if (computerScore === 5) {
 		winner.textContent = 'Computer is the game winner';
-		restart();
+		end();
 	}
 }
 
 function restart() {
-	playerScore = 0;
-	computerScore = 0;
+	
+}
+
+function end() {
+	document.getElementById('options').style.display = 'none';
+	restartBtn.style.display = 'block'
 }
 
 function mode(e) {
 	modes.forEach(element => { element.classList.toggle('active'); });
-	if (e.target.id === 'light')  document.body.style.background = '#4f4f4f'
-	else document.body.style.background = '#fff'
+	if (e.target.id === 'light') document.body.style.background = '#4f4f4f';
+	else document.body.style.background = '#fff';
 }
 
 playerScore = 0;
@@ -74,6 +78,7 @@ const playerScorer = document.getElementById("playerScore");
 const computerScorer = document.getElementById("computerScore");
 const winner = document.getElementById('winner');
 const modes = [...document.getElementsByClassName('mode')];
+const restartBtn = document.getElementById('restart-btn')
 
 // rock.addEventListener('click', () => game('rock'));
 // paper.addEventListener('click', () => game('paper'));
@@ -82,3 +87,10 @@ const modes = [...document.getElementsByClassName('mode')];
 option.forEach(element => element.addEventListener('click', () => game(element.id)));
 
 modes.forEach(element => element.addEventListener('click', (e) => mode(e)));
+
+restartBtn.addEventListener('click', () => {
+	playerScore = 0;
+	computerScore = 0;
+	document.getElementById('options').style.display = 'flex';
+	restartBtn.style.display = 'none'
+})
